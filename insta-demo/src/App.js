@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Component } from "react";
+// import logo from './logo.svg';
+import "./App.css";
+import smashdata from "./smashdata";
+import GameList from "./components/GameList";
+import Search from "./components/Search";
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      games: []
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      games: smashdata
+    });
+  }
+
   render() {
+    // console.log(smashdata);
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="app">
+        <Search />
+        <GameList games={this.state.games} />
       </div>
     );
   }
