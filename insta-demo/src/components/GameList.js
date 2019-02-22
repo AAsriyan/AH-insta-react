@@ -1,16 +1,15 @@
 import React from "react";
+import uuidv1 from "uuid";
+import Game from "./Game";
 
 const GameList = props => {
+  //   console.log(uuidv1());
   return (
     <div className="gamelist">
-      {props.games.map(game => {
-        <div className="game">
-          <h1>{game.name}</h1>
-          <h2>{game.protagonist}</h2>
-        </div>;
+      {props.games.map(g => {
+        return <Game key={uuidv1()} game={g} />;
       })}
     </div>
   );
 };
-
 export default GameList;
